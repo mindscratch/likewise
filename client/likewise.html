@@ -3,6 +3,16 @@
 </head>
 
 <body>
-Hello
+  {{> posts}}
 </body>
 
+<template name="posts">
+  <div class="posts">
+    {{#each posts}}
+      <div class="post">
+        <h1>{{title}}</h1>
+        <p>{{body}}</p>
+      </div>
+    {{/each}}
+  </div>
+</template>
