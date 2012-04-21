@@ -1,10 +1,39 @@
 <head>
   <title>likewise</title>
+
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
-  {{> posts}}
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+        {{> nav_menu}}
+      </div>
+      <div class="span10">
+        {{> posts}}
+      </div>
+    </div>
+  </div>
+
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/underscore-min.js"></script>
 </body>
+
+<template name="nav_menu">
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">Likewise</li>
+      <li class="active"><a href="#"><i class="icon-white icon-home"></i> Posts<span class="badge badge-inverse pull-right">{{postsCount}}</span></a></li>
+      <li><a href="#"><i class="icon-book"></i> Tags<span class="badge badge-inverse pull-right">{{tagsCount}}</span></a></li>
+      <li class="nav-header">Account</li>
+      <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+      <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+      <li class="divider"></li>
+      <li><a href="#"><i class="icon-flag"></i> Help</a></li>
+    </ul>
+  </div>
+</template>
 
 <template name="posts">
   <div class="posts">
@@ -12,6 +41,12 @@
       <div class="post">
         <h1>{{title}}</h1>
         <p>{{body}}</p>
+        <div>
+          {{#each tags}}
+            <span class="label">{{this}}</span>
+          {{/each}}
+        </div>
+        <br />
       </div>
     {{/each}}
   </div>
